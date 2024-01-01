@@ -1,0 +1,76 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>length of data pass from Backend : {{data | length}}</h1>
+
+<p>Uppper and Lower practice</p>
+
+
+<hr />
+{% for key in data %}
+
+<h3>
+  {% filter upper %}
+  <h3>{{key.strMeal}}</h3>
+
+  {% endfilter %} {% filter lower %}
+  <span>{{key.strMeal}}</span>
+  {% endfilter %}
+</h3>
+
+{% endfor %}
+
+<br>
+
+<p>Title Practice</p>
+<hr />
+<ul>
+  {% for key in data %}
+
+  <li>{{key.strMeal | title}}</li>
+  {% endfor %}
+</ul>
+
+<p>dafault Practice</p>
+<hr />
+
+<h1>{{''| default:"This is a practice of default value replacement"}}</h1>
+
+<p>Sorting the data based on IdMeal</p>
+<hr />
+
+{% for key in data|dictsort:'idMeal'  %}
+  <p>{{key.idMeal}} {{key.strMeal}}</p>
+
+{% endfor %}
+
+<p>Reversed Sorting the data based on IdMeal</p>
+<hr />
+
+{% for key in  data|dictsortreversed:'idMeal' %}
+  <p>{{key.idMeal}} {{key.strMeal}}</p>
+{% endfor %}
+
+<p>Check idMeal Even or Not using divisibleby</p>
+<hr>
+
+
+{% for key in data %}
+
+  {% if key.idMeal|divisibleby:2 %}
+    <h3>{{ key.idMeal }} is Even</h3>
+  {% else %}
+    <h3>{{ key.idMeal }} is Odd</h3>
+  {% endif %}
+
+{% endfor %}
+
+<p>Template Filter - join Practice</p>
+<hr>
+
+<h4>{{data| join:'-------------------'}}</h4>
+
+
+
+{% endblock content %}
+
+
