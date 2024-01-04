@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+<form action="" method="post" style="height:500px;width:50%;margin:auto">
+    {% csrf_token %}
+    <h2  style="border:1px solid gray; text-align:center;background-color:#B2A59B">Add Musician Personal Information</h2>
+    {{form | crispy}}
+    <button type="submit" class='btn btn-success'>Submit</button>
+
+</form>
+
+{% endblock content %}
+
